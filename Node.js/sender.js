@@ -1,7 +1,7 @@
 bleno = require('bleno')
 var Sound = require('node-aplay')
 
-var okaeri = new Sound('/home/pi/work/okaeri/kei1/wav/kei_voice_017_1.wav')
+var okaeri = new Sound('voice/kei_voice_017_1.wav')
 
 
 bleno.on('stateChange', function(state) {
