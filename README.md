@@ -61,3 +61,5 @@ forever start sender.js
 ## Usage
 iOSアプリを起動させてRasPiに近づけば「おかえり〜」と言ってくれる．  
 「ここらへんで言って欲しい」ぼたんを押せば，自由に範囲を変えることができる．
+## License
+This software is released under the MIT License, see LICENSE
