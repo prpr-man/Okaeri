@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Okaeri" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="azk-mq-3Ql">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RX0-q7-jwJ">
+                                <rect key="frame" x="193" y="452" width="215" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="215" id="DmH-w4-Noi"/>
+                                    <constraint firstAttribute="height" constant="48" id="g6E-Ck-Lot"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ここらへんで言って欲しい"/>
+                                <connections>
+                                    <action selector="setThreshold:" destination="BYZ-38-t0r" eventType="touchUpInside" id="25x-oL-JZd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="azk-mq-3Ql" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="5mg-m6-5iy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="azk-mq-3Ql" secondAttribute="bottom" id="M74-CI-Ofh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="azk-mq-3Ql" secondAttribute="trailing" constant="-20" id="ODM-3r-wgt"/>
+                            <constraint firstItem="RX0-q7-jwJ" firstAttribute="centerX" secondItem="azk-mq-3Ql" secondAttribute="centerX" id="jRw-51-rY0"/>
+                            <constraint firstItem="azk-mq-3Ql" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qUN-JO-PAt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RX0-q7-jwJ" secondAttribute="bottom" constant="100" id="smv-U9-x3G"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="313"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.jpg" width="1518" height="2208"/>
+    </resources>
+</document>
