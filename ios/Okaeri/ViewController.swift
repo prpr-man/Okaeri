@@ -15,10 +15,12 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     private var peripheral:CBPeripheral?;
     
     private var threshold:Float = -60.0;
-    private var rssiArray:[Int] = [];
+    private var configuring:Bool = false;
+    
+    
+    private var count:Int = 0;
     private var rssiSum:Int = 0;
-    private var rssiAve:Float = 0;
-    private var enter = false;
+    private var enter:Bool = false;
     
     
     override func viewDidLoad() {
@@ -47,40 +49,49 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             return;
         }
         
-        calcRssiAverage(RSSI.integerValue);
+        if(configuring){
+            let finish:Bool = configureThreshold(RSSI.integerValue);
+            if(finish){
+                NSUserDefaults.standardUserDefaults().setObject(threshold, forKey: "threshold");
+                NSUserDefaults.standardUserDefaults().synchronize();
+                configuring = false;
+            }
+            return;
+        }
         
         if(!enter && RSSI.floatValue > threshold){
             enter = true;
             self.peripheral = peripheral;
             self.centralManager.connectPeripheral(peripheral, options: nil);
-        }else if(enter && RSSI.floatValue < threshold*1.5){
-            enter = false;
         }
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral)
     {
-        centralManager.cancelPeripheralConnection(peripheral);
+        //centralManager.cancelPeripheralConnection(peripheral);
     }
     
-    func calcRssiAverage(RSSI : Int) {
-        rssiArray.append(RSSI);
+    func configureThreshold(RSSI : Int) -> Bool {
+        count++;
         rssiSum += RSSI;
-        if(rssiArray.count > 10){
-            rssiSum -= rssiArray.removeFirst();
-            rssiAve = Float(rssiSum)/10.0;
-        }else{
-            rssiAve = Float(rssiSum)/Float(rssiArray.count);
+        if(count >= 10){
+            threshold = Float(rssiSum)/10.0;
+            count = 0;
+            rssiSum = 0;
+            return true;
         }
+        return false;
+    }
+    
+    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+        enter = false;
+        print("disconnect");
     }
     
     @IBAction func setThreshold(sender: AnyObject) {
-        if(rssiArray.count == 0){
-            return
+        configuring = true
+        if(enter){
+            self.centralManager.cancelPeripheralConnection(self.peripheral!);
         }
-        
-        threshold = rssiAve;
-        NSUserDefaults.standardUserDefaults().setObject(threshold, forKey: "threshold");
-        NSUserDefaults.standardUserDefaults().synchronize();
     }
 }
