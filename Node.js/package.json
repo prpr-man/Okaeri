@@ -5,7 +5,7 @@
   "main": "sender.js",
   "dependencies" : {
     "bleno" : "*",
-    "node-aplay" : "*"
+    "node-mpg123" : "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,8 +1,7 @@
 bleno = require('bleno')
-var Sound = require('node-aplay')
 
-var okaeri = new Sound('voice/kei_voice_017_1.wav')
-
+var Sound = require('node-mpg123');
+var voice = new Sound('voice/kei_voice_017_1.mp3');
 
 bleno.on('stateChange', function(state) {
   if (state === 'poweredOn') {
@@ -14,6 +13,6 @@ bleno.on('stateChange', function(state) {
 
 
 bleno.on('accept', function (clientAddress){
-  okaeri.play();
+  voice.play();
 });
 
