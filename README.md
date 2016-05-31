@@ -54,12 +54,12 @@ $ node sender.js
   
 ずっと起動させたいときはforeverを使う．
 ```
-npm install forever -g
-forever start sender.js
+$ npm install forever -g
+$ forever start sender.js
 ```
 
 ## Usage
 iOSアプリを起動させてRasPiに近づけば「おかえり〜」と言ってくれる．  
-「ここらへんで言って欲しい」ぼたんを押せば，自由に範囲を変えることができる．
+「ここらへんで言って欲しい」ボタンを押せば，自由に範囲を変えることができる．
 ## License
 This software is released under the MIT License, see LICENSE
