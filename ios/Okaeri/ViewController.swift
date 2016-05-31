@@ -22,10 +22,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     private var rssiSum:Int = 0;
     private var enter:Bool = false;
     
-    
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.centralManager = CBCentralManager(delegate: self, queue: nil, options: nil);
+        self.centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionRestoreIdentifierKey : "okaeri"]);
         if let data:Float = NSUserDefaults.standardUserDefaults().objectForKey("threshold") as? Float {
             threshold = data;
         }
@@ -86,6 +85,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         enter = false;
         print("disconnect");
+    }
+    
+    func centralManager(central: CBCentralManager, willRestoreState dict: [String : AnyObject]) {
     }
     
     @IBAction func setThreshold(sender: AnyObject) {
